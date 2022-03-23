@@ -1,12 +1,11 @@
 package MiniAssignment2;
+import static java.lang.Thread.sleep;
 
-import net.jodah.failsafe.internal.util.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.time.Duration;
-import java.util.concurrent.TimeUnit;
+
 
 public class PhpTravels {
 //    public static void checkTitle(WebDriver driver)
@@ -27,16 +26,29 @@ public class PhpTravels {
         driver.get("https://phptravels.com/demo");
         String actualTitle = driver.getTitle();
         String expectedTitle = "PHPTRAVELS";
+        String parentWindow = driver.getWindowHandle();
         if(actualTitle.equals(expectedTitle)){
             System.out.println("PASS");
         }
         else{
-            System.out.println("Fail");
+            System.out.println("FAIL");
         }
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        WebElement element = driver.findElement(By.linkText("Login"));
-        element.click();
-//        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+
+        driver.findElement(By.xpath("//a[text()='Login']")).click();
+        String secondTitle = driver.getTitle();
+        if(expectedTitle.equals(secondTitle)){
+            System.out.println("PASS");
+        }
+        else {
+            System.out.println("FAIL");
+        }
+
+        driver.switchTo().window(parentWindow);
+
+        driver.findElement(By.xpath("//a[text()='Pricing']")).click();
+
+        driver.navigate().back();
+        driver.navigate().refresh();
         driver.quit();
     }
 
