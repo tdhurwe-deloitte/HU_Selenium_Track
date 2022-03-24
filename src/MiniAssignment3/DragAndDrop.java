@@ -17,8 +17,8 @@ public class DragAndDrop {
         driver.get("https://jqueryui.com/droppable/");
         Thread.sleep(3000);
         driver.switchTo().frame(0);
-        WebElement sourceElement = driver.findElement(By.xpath("//*[@id='draggable']"));
-        WebElement destinationElement = driver.findElement(By.xpath("//*[@id='droppable']"));
+        WebElement sourceElement = driver.findElement(By.xpath("//p[text()='Drag me to my target']"));
+        WebElement destinationElement = driver.findElement(By.xpath("//p[text()='Drop here']"));
 //        action.clickAndHold(sourceElement).moveToElement(destinationElement).release(destinationElement).build().perform();
         action.dragAndDrop(sourceElement,destinationElement).build().perform();
         Thread.sleep(3000);
