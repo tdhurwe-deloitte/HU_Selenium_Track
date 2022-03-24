@@ -16,11 +16,12 @@ public class DragAndDrop {
         driver.manage().window().maximize();
         driver.get("https://jqueryui.com/droppable/");
         Thread.sleep(3000);
+        driver.switchTo().frame(0);
         WebElement sourceElement = driver.findElement(By.xpath("//*[@id='draggable']"));
         WebElement destinationElement = driver.findElement(By.xpath("//*[@id='droppable']"));
 //        action.clickAndHold(sourceElement).moveToElement(destinationElement).release(destinationElement).build().perform();
         action.dragAndDrop(sourceElement,destinationElement).build().perform();
-//        Thread.sleep(3000);
+        Thread.sleep(3000);
         driver.quit();
     }
 }
