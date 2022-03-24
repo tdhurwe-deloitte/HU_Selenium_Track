@@ -1,5 +1,6 @@
 package MiniAssignment2;
 
+import java.lang.Thread;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -15,6 +16,11 @@ public class Headless {
 //        driver.manage().window().maximize();
         driver.get("https://phptravels.com/demo");
         String actualTitle = driver.getTitle();
+        try {
+            Thread.sleep(6000);
+        } catch(InterruptedException e) {
+            System.out.println("got interrupted!");
+        }
         String expectedTitle = "PHPTRAVELS";
         String parentWindow = driver.getWindowHandle();
         if(actualTitle.equals(expectedTitle)){

@@ -8,17 +8,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 
 public class PhpTravels {
-//    public static void checkTitle(WebDriver driver)
-//    {
-//        String actualTitle = driver.getTitle();
-//        String expectedTitle = "PHPTRAVELS";
-//        if(actualTitle.equals(expectedTitle)){
-//            System.out.println("PASS");
-//        }
-//        else{
-//            System.out.println("Fail");
-//        }
-//    }
     public static void main(String[] args) {
         System.setProperty("webdriver.chrome.driver", "C:\\Users\\tdhurwe\\Downloads\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
